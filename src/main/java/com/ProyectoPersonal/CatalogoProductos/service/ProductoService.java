@@ -32,4 +32,8 @@ public class ProductoService {
         producto1.setCantidad(producto.getCantidad());
         return productoRepository.save(producto1);
     }
+
+    public void Eliminar (Long id){
+        productoRepository.deleteById(id);
+    }
 }
