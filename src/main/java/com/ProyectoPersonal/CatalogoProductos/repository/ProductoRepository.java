@@ -1,0 +1,4 @@
+package com.ProyectoPersonal.CatalogoProductos.repository;
+
+public interface ProductoRepository {
+}
