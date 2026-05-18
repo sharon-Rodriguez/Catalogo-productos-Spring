@@ -28,4 +28,17 @@ public class ProductoController {
     public Producto crearProducto (@RequestBody Producto producto){
         return productoService.crearProducto(producto);
     }
+
+    @PutMapping
+    public Producto ActualizarProducto(
+            @PathVariable Long id,
+            @RequestBody Producto producto
+    ) {
+        return productoService.actualizar(id,producto);
+        }
+
+    @DeleteMapping
+    public void EliminarProducto (@PathVariable Long id){
+        productoService.Eliminar(id);
+    }
 }
