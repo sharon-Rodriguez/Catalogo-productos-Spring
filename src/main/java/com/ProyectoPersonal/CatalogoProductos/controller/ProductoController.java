@@ -14,7 +14,7 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-    @GetMapping
+    @GetMapping("/{id}")
     public Producto verProductoID (@PathVariable Long id){
         return productoService.verProductosId(id);
     }
@@ -29,7 +29,7 @@ public class ProductoController {
         return productoService.crearProducto(producto);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public Producto ActualizarProducto(
             @PathVariable Long id,
             @RequestBody Producto producto
@@ -37,7 +37,7 @@ public class ProductoController {
         return productoService.actualizar(id,producto);
         }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void EliminarProducto (@PathVariable Long id){
         productoService.Eliminar(id);
     }
