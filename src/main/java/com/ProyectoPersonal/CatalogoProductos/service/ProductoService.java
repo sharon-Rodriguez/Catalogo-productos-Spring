@@ -13,19 +13,19 @@ public class ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
-    public Producto VerProductosId(Long id){
+    public Producto verProductosId(Long id){
         return productoRepository.findById(id).orElseThrow();
     }
 
-    public List<Producto> VerProductos (){
+    public List<Producto> verProductos (){
         return productoRepository.findAll();
     }
 
-    public Producto CrearProducto (Producto producto){
+    public Producto crearProducto (Producto producto){
         return productoRepository.save(producto);
     }
 
-    public Producto Actualizar (Long id, Producto producto) {
+    public Producto actualizar (Long id, Producto producto) {
         Producto producto1 = productoRepository.findById(id).orElseThrow();
         producto1.setNombre(producto.getNombre());
         producto1.setCantidad(producto.getCantidad());
