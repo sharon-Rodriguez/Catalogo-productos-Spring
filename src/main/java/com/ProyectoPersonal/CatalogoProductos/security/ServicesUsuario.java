@@ -1,4 +1,4 @@
-package com.ProyectoPersonal.CatalogoProductos.service;
+package com.ProyectoPersonal.CatalogoProductos.security;
 
 import com.ProyectoPersonal.CatalogoProductos.model.Usuario;
 import com.ProyectoPersonal.CatalogoProductos.repository.UsuarioRepository;
