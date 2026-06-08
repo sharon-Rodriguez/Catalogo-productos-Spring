@@ -16,6 +16,7 @@ public class ProductoController {
 
     @GetMapping("/{id}")
     public Producto verProductoID (@PathVariable Long id){
+
         return productoService.verProductosId(id);
     }
 
@@ -26,6 +27,7 @@ public class ProductoController {
 
     @PostMapping
     public Producto crearProducto (@RequestBody Producto producto){
+
         return productoService.crearProducto(producto);
     }
 
