@@ -33,6 +33,8 @@ public class ProductoService {
         return productoRepository.save(producto1);
     }
 
+    public void EliminarTodos () { productoRepository.deleteAll();}
+
     public void Eliminar (Long id){
         productoRepository.deleteById(id);
     }
