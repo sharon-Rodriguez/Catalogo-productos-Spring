@@ -25,8 +25,16 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(permisos -> permisos
                         .requestMatchers(HttpMethod.GET, "/productos").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .anyRequest().hasRole("ADMIN")
+                )
+                .exceptionHandling(ex -> ex
+                                .authenticationEntryPoint((request, response, authException) -> {
+                                    response.setStatus(401);
+                                    response.getWriter().write("No tienes rol administrador para ejecutar esta accion");
+                                })
+
                 )
                 .httpBasic(Customizer.withDefaults());
                 return http.build();
