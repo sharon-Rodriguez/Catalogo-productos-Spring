@@ -1,4 +1,4 @@
 package com.ProyectoPersonal.CatalogoProductos.model;
 
-public record MuestraUsuario() {
+public record MuestraUsuario(String nombre, String email) {
 }
