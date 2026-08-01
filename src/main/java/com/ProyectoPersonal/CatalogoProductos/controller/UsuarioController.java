@@ -5,10 +5,7 @@ import com.ProyectoPersonal.CatalogoProductos.security.ServicesUsuario;
 import com.ProyectoPersonal.CatalogoProductos.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping ("/auth")
@@ -16,6 +13,11 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService servicesUsuario;
+
+    @GetMapping ("/{id}")
+    public Usuario mostrarUsuario (@PathVariable Long id){
+        return servicesUsuario.mostrarUsuario(id);
+    }
 
     @PostMapping ("/registro")
     public Usuario registro (@RequestBody Usuario usuario){
