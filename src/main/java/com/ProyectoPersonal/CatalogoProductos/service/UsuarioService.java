@@ -21,13 +21,14 @@ public class UsuarioService {
     public List<MuestraUsuario> mostrarUsuariosTodos (){
         return usuarioRepository.findAll()
                 .stream()
-                .map(e -> new MuestraUsuario(e.getNombre(), e.getEmail()))
+                .map(e -> new MuestraUsuario(e.getNombre(), e.getEmail(), e.getId(), e.getRol()))
                 .toList();
     }
 
-    public Usuario mostrarUsuario (Long id){
+    public MuestraUsuario mostrarUsuario (Long id){
         return usuarioRepository.findById(id)
-                .orElseThrow(()->new RuntimeException("Usuario con id =" + id + "no encontrado"));
+                .map(e -> new MuestraUsuario(e.getNombre(), e.getEmail(), e.getId(), e.getRol()))
+                .orElseThrow(()->new RuntimeException("Usuario con id= " + id + " no encontrado o no existe"));
     }
 
     public Usuario registro (Usuario usuario){
