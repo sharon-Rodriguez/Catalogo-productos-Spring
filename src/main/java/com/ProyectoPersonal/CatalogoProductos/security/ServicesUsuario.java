@@ -3,6 +3,7 @@ package com.ProyectoPersonal.CatalogoProductos.security;
 import com.ProyectoPersonal.CatalogoProductos.model.Usuario;
 import com.ProyectoPersonal.CatalogoProductos.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,7 +24,7 @@ public class ServicesUsuario implements UserDetailsService {
         return User.builder()
                 .username(usuario.getEmail())
                 .password(usuario.getContraseña())
-                .roles(usuario.getRol().name())
+                .authorities(new SimpleGrantedAuthority(usuario.getRol().name()))
                 .build();
     }
 }
