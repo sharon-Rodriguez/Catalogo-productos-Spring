@@ -33,8 +33,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(permisos -> permisos
                         .requestMatchers(HttpMethod.GET, "/productos").permitAll()
                         .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/auth/**").hasAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.GET,"/auth").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST,"/auth/registro").permitAll()
                         .anyRequest().hasAuthority("ADMIN")
