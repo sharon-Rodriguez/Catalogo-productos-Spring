@@ -1,11 +1,17 @@
 package com.ProyectoPersonal.CatalogoProductos.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table (name = "usuarios")
 
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +27,8 @@ public class Usuario {
     public Usuario() {
     }
 
-//    getters
+    //    getters
+    public long getId() { return id; }
     public String getNombre() { return nombre; }
     public String getEmail() { return email; }
     public String getContraseña() { return contraseña; }
@@ -32,5 +39,20 @@ public class Usuario {
     public void setEmail(String email) { this.email = email; }
     public void setContraseña(String contraseña) { this.contraseña = contraseña; }
     public void setRol(Rol rol) { this.rol = rol; }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(rol.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return contraseña;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
 
 }
