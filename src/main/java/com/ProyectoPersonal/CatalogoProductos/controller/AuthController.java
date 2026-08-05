@@ -21,7 +21,7 @@ public class AuthController {
     @Autowired
     private TokenServices tokenServices;
 
-    @PostMapping("/auth")
+    @PostMapping("/auth/login")
     public String login (@RequestBody Usuario usuario){
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
