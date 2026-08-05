@@ -17,12 +17,12 @@ public class UsuarioController {
     @Autowired
     private UsuarioService servicesUsuario;
 
-    @GetMapping
+    @GetMapping ("/mostrar")
     public List<MuestraUsuario> usuarios (){
         return servicesUsuario.mostrarUsuariosTodos();
     }
 
-    @GetMapping ("/{id}")
+    @GetMapping ("/mostrar/{id}")
     public MuestraUsuario mostrarUsuario (@PathVariable Long id){
         return servicesUsuario.mostrarUsuario(id);
     }
