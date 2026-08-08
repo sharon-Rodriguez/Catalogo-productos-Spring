@@ -13,6 +13,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicesUsuario implements UserDetailsService {
 
+    public ServicesUsuario(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -21,10 +25,6 @@ public class ServicesUsuario implements UserDetailsService {
         Usuario usuario = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("No se encontró usuairo"));
 
-        return User.builder()
-                .username(usuario.getEmail())
-                .password(usuario.getContraseña())
-                .authorities(new SimpleGrantedAuthority(usuario.getRol().name()))
-                .build();
+        return usuario;
     }
 }
