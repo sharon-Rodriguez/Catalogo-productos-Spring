@@ -1,6 +1,7 @@
 package com.ProyectoPersonal.CatalogoProductos.service;
 
 import com.ProyectoPersonal.CatalogoProductos.model.Producto;
+import com.ProyectoPersonal.CatalogoProductos.model.Usuario;
 import com.ProyectoPersonal.CatalogoProductos.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,11 +26,26 @@ public class ProductoService {
         return productoRepository.save(producto);
     }
 
-    public Producto actualizar (Long id, Producto producto) {
+    public Producto actualizarParcial (Long id, Producto productoActualizado) {
         Producto producto1 = productoRepository.findById(id).orElseThrow();
-        producto1.setNombre(producto.getNombre());
-        producto1.setCantidad(producto.getCantidad());
-        producto1.setCantidad(producto.getCantidad());
+
+        if (productoActualizado.getNombre() != null){
+            producto1.setNombre(productoActualizado.getNombre());
+        }
+        if (productoActualizado.getCantidad() != null){
+            producto1.setCantidad(productoActualizado.getCantidad());
+        }
+        if (productoActualizado.getPrecio() != null){
+            producto1.setPrecio(productoActualizado.getPrecio());
+        }
+        return productoRepository.save(producto1);
+    }
+
+    public Producto actualizar (Long id, Producto productoActualizado){
+        Producto producto1 = productoRepository.findById(id).orElseThrow();
+        producto1.setNombre(productoActualizado.getNombre());
+        producto1.setCantidad(productoActualizado.getCantidad());
+        producto1.setCantidad(productoActualizado.getCantidad());
         return productoRepository.save(producto1);
     }
 
