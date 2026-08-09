@@ -30,12 +30,16 @@ public class ProductoController {
     }
 
     @PutMapping("/{id}")
-    public Producto ActualizarProducto(
+    public Producto Actualizar(
             @PathVariable Long id,
             @RequestBody Producto producto
     ) {
         return productoService.actualizar(id,producto);
         }
+    @PatchMapping ("/{id}")
+    public Producto actualizacionParcial (@PathVariable long id, @RequestBody Producto producto){
+        return productoService.actualizarParcial(id,producto);
+    }
 
     @DeleteMapping
         public void EliminarTodos(){
