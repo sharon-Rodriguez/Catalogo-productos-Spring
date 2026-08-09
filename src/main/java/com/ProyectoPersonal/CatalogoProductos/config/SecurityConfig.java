@@ -1,5 +1,6 @@
 package com.ProyectoPersonal.CatalogoProductos.config;
 
+import com.ProyectoPersonal.CatalogoProductos.repository.UsuarioRepository;
 import com.ProyectoPersonal.CatalogoProductos.security.JwtFilter;
 import com.ProyectoPersonal.CatalogoProductos.security.ServicesUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     @Autowired
-    private JwtFilter jwtFilter;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private ServicesUsuario servicesUsuario;
+    private JwtFilter jwtFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -60,8 +61,4 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
-    @Bean
-    public org.springframework.security.core.userdetails.UserDetailsService userDetailsService() {
-        return servicesUsuario;
-    }
 }
