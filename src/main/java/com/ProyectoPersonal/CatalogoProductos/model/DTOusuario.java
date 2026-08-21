@@ -1,4 +1,4 @@
 package com.ProyectoPersonal.CatalogoProductos.model;
 
-public record DTOusuario() {
+public record DTOusuario(String email, String contraseña) {
 }
