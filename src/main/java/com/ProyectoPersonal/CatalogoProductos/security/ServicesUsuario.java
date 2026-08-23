@@ -13,10 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicesUsuario implements UserDetailsService {
 
-    public ServicesUsuario(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
-
     @Autowired
     private UsuarioRepository usuarioRepository;
 
